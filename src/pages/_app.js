@@ -1,7 +1,11 @@
-import '@/styles/common/reset.scss'
+import "@/styles/common/reset.scss";
+
+import { UserProvider } from "context/userContext";
 
 export default function App({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
-  )
+    <UserProvider>
+      <Component {...pageProps} />
+    </UserProvider>
+  );
 }

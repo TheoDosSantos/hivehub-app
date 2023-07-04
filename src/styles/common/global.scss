@@ -109,7 +109,7 @@ $grid_mobile: calc(100% - 50px);
 =            BREAK POINT            =
 ===================================*/
 
-$breakPoint_tablet: 1204px;
+$breakPoint_tablet: 1228px;
 $breakPoint_mobile: 700px;
 
 @media ($breakPoint_mobile <= width <= $breakPoint_tablet) and (orientation: portrait) {

@@ -27,13 +27,7 @@
                     @include styleGrid("width", 3);
                     .btn{
                         width: 100%;
-                        &:nth-child(1){
-                            @include styleButton("big", "1");
-                        }
-                        &:nth-child(2){
-                            margin-top: 16px;
-                            @include styleButton("big", "2");
-                        }
+                        @include styleButton("big", "1");
                     }
                 }
             }

@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 
 import styles from "@/styles/components/header.module.scss";
 
-const header = () => {
-  const [logged, setLogged] = useState(false);
+import { UserContext } from "context/userContext";
+
+const header = ({ action }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { isAuth } = useContext(UserContext);
 
   const handleScroll = () => {
     const scrollPosition = window.pageYOffset;
@@ -54,18 +57,20 @@ const header = () => {
               )}
             </Link>
           </div>
-          <div className={styles.container_action}>
-            {!logged && (
-              <Link href="/login" className={styles.link}>
-                Connexion
-              </Link>
-            )}
-            {logged && (
-              <Link href="/profile" className={styles.link}>
-                Mon compte
-              </Link>
-            )}
-          </div>
+          {action && (
+            <div className={styles.container_action}>
+              {!isAuth && (
+                <Link href="/login" className={styles.link}>
+                  Connexion
+                </Link>
+              )}
+              {isAuth && (
+                <Link href="/profile" className={styles.link}>
+                  Mon compte
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </header>
