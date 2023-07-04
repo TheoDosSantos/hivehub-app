@@ -1,0 +1,73 @@
+@import '@/styles/common/global.scss';
+
+.home{
+    .section_hero{
+        .wrapper{
+            @include styleGrid("wrapper");
+        }
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 200px;
+            .content{
+                @include styleGrid("width", 5);
+                h1{
+                    @include styleH("h1");
+                    em{
+                        color: $colorPrimary_1;
+                    }
+                }
+                p{
+                    margin-top: 16px;
+                    @include styleP("big");
+                }
+                .container_btn{
+                    margin-top: 32px;
+                    @include styleGrid("width", 3);
+                    .btn{
+                        width: 100%;
+                        &:nth-child(1){
+                            @include styleButton("big", "1");
+                        }
+                        &:nth-child(2){
+                            margin-top: 16px;
+                            @include styleButton("big", "2");
+                        }
+                    }
+                }
+            }
+            .container_img{
+                @include styleGrid("width", 5);
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                background-color: $colorSecondary_1;
+                border-radius: 32px;
+                img{
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    @media (width <= $breakPoint_tablet) {
+        .section_hero{
+            .container{
+                flex-direction: column;
+                gap: 32px;
+                padding-top: 120px;
+                padding-bottom: 64px;
+                .content{
+                    width: 100%;
+                    .container_btn{
+                        width: 100%;
+                    }
+                }
+                .container_img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

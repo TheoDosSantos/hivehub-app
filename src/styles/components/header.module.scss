@@ -1,0 +1,34 @@
+@import '@/styles/common/global.scss';
+
+.header{
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    width: 100%;
+    transition: transform 0.5s ease, background-color 0.3s ease;
+    .wrapper{
+        @include styleGrid("wrapper");
+    }
+    .container{
+        padding-top: 40px;
+        padding-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .container_logo{
+            img{
+                height: 32px;
+            }
+        }
+        .container_action{
+            .link{
+                @include styleA("big", "2");
+            }
+        }
+    }
+    &.style_scroll{
+        transform: translateY(-24px);
+        background-color: $colorGreyscale_5;
+        border-bottom: 1px solid $colorGreyscale_4;
+    }
+}
