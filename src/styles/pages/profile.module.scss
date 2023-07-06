@@ -1,0 +1,138 @@
+@import '@/styles/common/global.scss';
+
+.profile{
+    .section_hero{
+        .wrapper{
+            @include styleGrid("wrapper");
+        }
+        .container{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 200px;
+            .content{
+                @include styleGrid("width", 5);
+                h1{
+                    @include styleH("h1");
+                    em{
+                        color: $colorPrimary_1;
+                    }
+                }
+                .container_nav{
+                    width: fit-content;
+                    position: relative;
+                    margin-top: 40px;
+                    display: flex;
+                    .nav_tab{
+                        cursor: pointer;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        padding: 8px 16px;
+                        min-width: 120px;
+                        span{
+                            @include styleP("big");
+                            font-family: $font_2_bold;
+                            color: $colorGreyscale_4;
+                            transition: color 0.3s ease;
+                        }
+                        &::after{
+                            content: "";
+                            position: absolute;
+                            z-index: 2;
+                            bottom: -8px;
+                            left: 0;
+                            width: 100%;
+                            height: 2px;
+                            background-color: $colorGreyscale_4;
+                            transition: background-color 0.3s ease;
+                        }
+                        &.style_active{
+                            span{
+                                color: $colorPrimary_1;
+                            }
+                            &::after{
+                                background-color: $colorPrimary_1;
+                            }
+                        }
+                    }
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        z-index: 1;
+                        bottom: -8px;
+                        left: 0;
+                        width: 100%;
+                        height: 2px;
+                        background-color: $colorGreyscale_4;
+                    }
+                }
+                .container_infos{
+                    margin-top: 32px;
+                    .title{
+                        @include styleH("h4");
+                        margin-bottom: 24px;
+                    }
+                    .container_row{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 16px;
+                        .row{
+                            display: flex;
+                            gap: 16px;
+                            .item{
+                                @include styleP("medium");
+                                color: $colorGreyscale_3;
+                                em{
+                                    @include styleP("medium");
+                                    color: $colorGreyscale_1;
+                                }
+                            }
+                        }
+                    }
+                }
+                .container_btn{
+                    margin-top: 32px;
+                    @include styleGrid("width", 3);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    .btn{
+                        width: 100%;
+                        @include styleButton("big", "1");
+                    }
+                }
+            }
+            .container_img{
+                @include styleGrid("width", 5);
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                background-color: $colorSecondary_1;
+                border-radius: 32px;
+                img{
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    @media (width <= $breakPoint_tablet) {
+        .section_hero{
+            .container{
+                flex-direction: column;
+                gap: 32px;
+                padding-top: 120px;
+                padding-bottom: 64px;
+                .content{
+                    width: 100%;
+                    .container_btn{
+                        width: 100%;
+                    }
+                }
+                .container_img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
