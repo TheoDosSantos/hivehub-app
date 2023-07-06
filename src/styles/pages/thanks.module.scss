@@ -1,0 +1,48 @@
+@import '@/styles/common/global.scss';
+
+.thanks{
+    .section_hero{
+        .wrapper{
+            @include styleGrid("wrapper");
+        }
+        .container{
+            padding-top: 200px;
+            .content{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                text-align: center;
+                h1{
+                    @include styleH("h1");
+                    em{
+                        color: $colorPrimary_1;
+                    }
+                }
+                p{
+                    margin-top: 24px;
+                    @include styleP("big");
+                }
+                .container_btn{
+                    margin-top: 32px;
+                    @include styleGrid("width", 3);
+                    .btn{
+                        width: 100%;
+                        @include styleButton("big", "1");
+                    }
+                }
+            }
+        }
+    }
+    @media (width <= $breakPoint_tablet) {
+        .section_hero{
+            .container{
+                .content{
+                    .container_btn{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
