@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export const UserContext = createContext({
   isAuth: false,
@@ -9,15 +10,22 @@ export const UserContext = createContext({
 export const UserProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
   const [userInfo, setUserInfo] = useState({});
+  const router = useRouter();
 
   const login = (info) => {
     setIsAuth(true);
     setUserInfo(info);
   };
 
-  const logout = () => {
+  const  logout = async() => {
     setIsAuth(false);
     setUserInfo({});
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+    router.push("/");
+
   };
 
   useEffect(() => {

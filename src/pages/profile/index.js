@@ -12,7 +12,7 @@ const profile = () => {
   const seoDescription =
     "Réservez, partagez et connectez-vous dans notre écosystème d'espaces de travail dynamiques.";
 
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, logout } = useContext(UserContext);
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -97,22 +97,36 @@ const profile = () => {
                 )}
                 <div className={styles.container_btn}>
                   {!userInfo.isAdmin && (
-                    <Link href="/profile/update" className={styles.btn}>
-                      <span className={styles.btn_text}>Modifier</span>
-                    </Link>
+                    <>
+                      <Link href="/profile/update" className={styles.btn}>
+                        <span className={styles.btn_text}>Modifier</span>
+                      </Link>
+                      <div className={styles.btn} onClick={logout}>
+                        <span className={styles.btn_text}>Déconnexion</span>
+                      </div>
+                    </>
                   )}
                   {userInfo.isAdmin && activeTab === 0 && (
-                    <Link href="/profile/update" className={styles.btn}>
-                      <span className={styles.btn_text}>Modifier</span>
-                    </Link>
+                    <>
+                      <Link href="/profile/update" className={styles.btn}>
+                        <span className={styles.btn_text}>Modifier</span>
+                      </Link>
+                      <div className={styles.btn} onClick={logout}>
+                        <span className={styles.btn_text}>Déconnexion</span>
+                      </div>
+                    </>
                   )}
                   {userInfo.isAdmin && activeTab === 1 && (
                     <>
                       <Link href="/admin/users" className={styles.btn}>
-                        <span className={styles.btn_text}>Gérer les utilisateurs</span>
+                        <span className={styles.btn_text}>
+                          Gérer les utilisateurs
+                        </span>
                       </Link>
                       <Link href="/admin/rooms" className={styles.btn}>
-                        <span className={styles.btn_text}>Gérer les espaces</span>
+                        <span className={styles.btn_text}>
+                          Gérer les espaces
+                        </span>
                       </Link>
                     </>
                   )}
