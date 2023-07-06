@@ -9,6 +9,10 @@ const withPWA = require("next-pwa")({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withPWA({
-    // next config
+    reactStrictMode: true,
+    env: {
+        NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+
+    }
 });
 module.exports = nextConfig;
