@@ -10,7 +10,7 @@ import { UserContext } from "context/userContext";
 const home = () => {
   const seoTitle = "Accueil | Hivehub";
   const seoDescription =
-    "Hivehub est une plateforme de gestion de projets open-source.";
+    "Réservez, partagez et connectez-vous dans notre écosystème d'espaces de travail dynamiques.";
 
   const { isAuth } = useContext(UserContext);
 
@@ -18,7 +18,7 @@ const home = () => {
     <div className={styles.home}>
       <Layout>
         <SEO title={seoTitle} description={seoDescription} />
-        <div className={styles.section_hero}>
+        <section className={styles.section_hero}>
           <div className={styles.wrapper}>
             <div className={styles.container}>
               <div className={styles.content}>
@@ -59,7 +59,7 @@ const home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </Layout>
     </div>
   );

@@ -10,7 +10,7 @@ import styles from "@/styles/pages/register.module.scss";
 const login = () => {
   const seoTitle = "Inscription | Hivehub";
   const seoDescription =
-    "Hivehub est une plateforme de gestion de projets open-source.";
+    "Réservez, partagez et connectez-vous dans notre écosystème d'espaces de travail dynamiques.";
 
   const [firstname, setFirstname] = useState("");
   const [name, setName] = useState("");
@@ -21,18 +21,21 @@ const login = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:8000/api/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        firstname,
-        mail,
-        password,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          firstname,
+          mail,
+          password,
+        }),
+      }
+    );
 
     if (response.status === 201) {
       router.push("/login");
@@ -42,10 +45,10 @@ const login = () => {
   };
 
   return (
-    <div className={styles.login}>
+    <div className={styles.register}>
       <Layout>
         <SEO title={seoTitle} description={seoDescription} />
-        <div className={styles.section_hero}>
+        <section className={styles.section_hero}>
           <div className={styles.wrapper}>
             <div className={styles.container}>
               <div className={styles.container_form}>
@@ -111,7 +114,7 @@ const login = () => {
                   </div>
                   <div className={styles.container_submit}>
                     <button className={styles.btn} type="submit">
-                      <span className={styles.btn_text}>Connexion</span>
+                      <span className={styles.btn_text}>S'inscrire</span>
                     </button>
                     <p>
                       Vous êtes déjà inscrit chez nous ?{" "}
@@ -125,7 +128,7 @@ const login = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </Layout>
     </div>
   );

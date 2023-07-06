@@ -12,7 +12,7 @@ import { UserContext } from "context/userContext";
 const login = () => {
   const seoTitle = "Connexion | Hivehub";
   const seoDescription =
-    "Hivehub est une plateforme de gestion de projets open-source.";
+    "Réservez, partagez et connectez-vous dans notre écosystème d'espaces de travail dynamiques.";
 
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,17 +23,20 @@ const login = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:8000/api/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        mail,
-        password,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          mail,
+          password,
+        }),
+      }
+    );
     if (response.status === 200) {
       const userInfo = await response.json();
       login(userInfo);
@@ -47,7 +50,7 @@ const login = () => {
     <div className={styles.login}>
       <Layout>
         <SEO title={seoTitle} description={seoDescription} />
-        <div className={styles.section_hero}>
+        <section className={styles.section_hero}>
           <div className={styles.wrapper}>
             <div className={styles.container}>
               <div className={styles.container_form}>
@@ -103,7 +106,7 @@ const login = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </Layout>
     </div>
   );
