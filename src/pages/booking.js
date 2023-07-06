@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import Layout from "/components/layout.js";
-import SEO from "/components/SEO";
-import Lightbox from "/components/lightbox";
+import SEO from "/components/seo.js";
+import Lightbox from "/components/lightbox.js";
 
 import styles from "@/styles/pages/booking.module.scss";
 

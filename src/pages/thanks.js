@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import Layout from "/components/layout.js";
-import SEO from "/components/SEO";
+import SEO from "/components/seo.js";
 
 import Link from "next/link";
 
