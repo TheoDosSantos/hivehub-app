@@ -1,0 +1,124 @@
+@import '@/styles/common/global.scss';
+
+.lightbox{
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+    &.style_active{
+        visibility: visible;
+        opacity: 1;
+        z-index: 30;
+    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    .wrapper{
+        height: 100%;
+        @include styleGrid("wrapper");
+    }
+
+    .container_lightbox{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        z-index: 32;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 880px;
+        padding: 24px;
+        background-color: $colorGreyscale_5;
+        border-radius: 32px;
+        transform: translate(-50%, -50%);
+        .close{
+            cursor: pointer;
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 32px;
+            background-color: $colorPrimary_1;
+
+        }
+        .container_img{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include styleGrid("width", 4);
+            height: 100%;
+            border-radius: 24px;
+            background-color: $colorSecondary_1;
+            img{
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        .content{
+            @include styleGrid("width", 4);
+            .container_text{
+                .title{
+                    @include styleH("h3");
+                }
+                .container_date{
+                    margin-top: 24px;
+
+                }
+                .container_price{
+                    margin-top: 16px;
+                }
+                .container_description{
+                    margin-top: 16px;
+                }
+                .container_date,
+                .container_price,
+                .container_description{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    .label{
+                        @include styleH("h5");
+                    }
+                    .text{
+                        @include styleP("medium");
+                    }
+                }
+            }
+            .container_btn{
+                margin-top: 48px;
+                .btn{
+                    @include styleButton("big", "1");
+                }
+            }
+
+        }
+    }
+    .background{
+        position: absolute;
+        z-index: 31;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    @media (width <= $breakPoint_tablet) {
+        .container_lightbox{
+            padding: 32px 24px;
+            width: 100%;
+            flex-direction: column-reverse;
+            .content{
+                width: 100%;
+            }
+            .container_img{
+                display: none;
+            }
+        }
+    }
+}
